@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: lub-php-page
+Plugin Name: lub-links-page
 Plugin URI: http://linkusback.com
 Description: This plugin automates the process of installing the links page for the service http://linkusback.com
 Version: 0.1
@@ -25,22 +25,22 @@ $pp_default_slug = 'resources';
 $pp_default_pp_help = true;
 $pp_default_credit = true;
 
-add_option( 'lub_php_page_lubid', $pp_default_lubid );
-add_option( 'lub_php_page_title', $pp_default_title );
-add_option( 'lub_php_page_slug', $pp_default_slug );
-add_option( 'lub_php_page_pp_help', $pp_default_pp_help );
-add_option( 'lub_php_page_credit', $pp_default_credit );
+add_option( 'lub_links_page_lubid', $pp_default_lubid );
+add_option( 'lub_links_page_title', $pp_default_title );
+add_option( 'lub_links_page_slug', $pp_default_slug );
+add_option( 'lub_links_page_pp_help', $pp_default_pp_help );
+add_option( 'lub_links_page_credit', $pp_default_credit );
 
-function lub_php_page_options_setup() {
+function lub_links_page_options_setup() {
     if( function_exists( 'add_options_page' ) ){
         add_options_page( 'LUB Links Page', 'LUB Links Page', 8, 
-                          basename(__FILE__), 'lub_php_page_options_page');
+                          basename(__FILE__), 'lub_links_page_options_page');
     }
 
 }
 
-function lub_php_page_options_page(){
-    global $lub_php_page_ver;
+function lub_links_page_options_page(){
+    global $lub_links_page_ver;
     global $pp_default_lubid;
     global $pp_default_title;
     global $pp_default_slug;
@@ -51,11 +51,11 @@ function lub_php_page_options_page(){
 
         echo '<div id="message" class="updated fade"><p><strong>';
 
-	update_option( 'lub_php_page_title', $pp_default_title );
-	update_option( 'lub_php_page_lubid', $pp_default_lubid );
-	update_option( 'lub_php_page_slug', $pp_default_slug );
-	update_option( 'lub_php_page_pp_help', $pp_default_pp_help );
-	update_option( 'lub_php_page_credit', $pp_default_credit );
+	update_option( 'lub_links_page_title', $pp_default_title );
+	update_option( 'lub_links_page_lubid', $pp_default_lubid );
+	update_option( 'lub_links_page_slug', $pp_default_slug );
+	update_option( 'lub_links_page_pp_help', $pp_default_pp_help );
+	update_option( 'lub_links_page_credit', $pp_default_credit );
 
 	echo 'Default LUB Links Page options loaded!';
 	echo '</strong></p></div>';
@@ -64,16 +64,16 @@ function lub_php_page_options_page(){
 
         echo '<div id="message" class="updated fade"><p><strong>';
 
-	$title = trim(stripslashes( (string) $_POST[ 'lub_php_page_title' ] ));
-	$slug  = trim(stripslashes( (string) $_POST[ 'lub_php_page_slug' ] ));
-	$lubid = trim(stripslashes( (string) $_POST['lub_php_page_lubid' ] ));
+	$title = trim(stripslashes( (string) $_POST[ 'lub_links_page_title' ] ));
+	$slug  = trim(stripslashes( (string) $_POST[ 'lub_links_page_slug' ] ));
+	$lubid = trim(stripslashes( (string) $_POST['lub_links_page_lubid' ] ));
 
-	update_option( 'lub_php_page_title', $title );
-	update_option( 'lub_php_page_lubid', $lubid );
-	update_option( 'lub_php_page_slug', $slug );
+	update_option( 'lub_links_page_title', $title );
+	update_option( 'lub_links_page_lubid', $lubid );
+	update_option( 'lub_links_page_slug', $slug );
 
 	$post_title = $title;
-	$post_content = '<!-- lub_php_page -->';
+	$post_content = '<!-- lub_links_page -->';
 	$post_status = 'publish';
 	$post_author = 1;
 	$post_name = $slug;
@@ -95,11 +95,11 @@ function lub_php_page_options_page(){
 
         echo '<div id="message" class="updated fade"><p><strong>';
 
-	update_option( 'lub_php_page_lubid', trim( stripslashes( (string) $_POST['lub_php_page_lubid' ] )));
-	update_option( 'lub_php_page_title', trim( stripslashes( (string) $_POST['lub_php_page_title' ] )));
-	update_option( 'lub_php_page_slug', trim( stripslashes( (string) $_POST['lub_php_page_slug' ] )));
-	update_option( 'lub_php_page_pp_help', (bool) $_POST['lub_php_page_pp_help'] );
-	update_option( 'lub_php_page_credit', (bool) $_POST['lub_php_page_credit'] );
+	update_option( 'lub_links_page_lubid', trim( stripslashes( (string) $_POST['lub_links_page_lubid' ] )));
+	update_option( 'lub_links_page_title', trim( stripslashes( (string) $_POST['lub_links_page_title' ] )));
+	update_option( 'lub_links_page_slug', trim( stripslashes( (string) $_POST['lub_links_page_slug' ] )));
+	update_option( 'lub_links_page_pp_help', (bool) $_POST['lub_links_page_pp_help'] );
+	update_option( 'lub_links_page_credit', (bool) $_POST['lub_links_page_credit'] );
 
 	echo 'Configuration updated!';
 	echo '</strong></p></div>';
@@ -108,11 +108,11 @@ function lub_php_page_options_page(){
     ?>
 
     <div class="wrap">
-    <h2>LUB Links Page <?php echo $lub_php_page_ver; ?></h2>
+    <h2>LUB Links Page <?php echo $lub_links_page_ver; ?></h2>
     <p>The <a href="http://linkusback.com" target="_blank">LUB Links Page Plugin for WordPress</a> automatically generates the linkusback.com  
     links page. Please note that you have to be a paying member in the LinkusBack system in order to be able use this plugin, although the plugin itself comes free of charge.    </p>
 
-    <p>To use the plugin, insert the trigger text <strong>&lt;!--&nbsp;lub_php_page&nbsp;--&gt;</strong> into an existing page. The trigger will be
+    <p>To use the plugin, insert the trigger text <strong>&lt;!--&nbsp;lub_links_page&nbsp;--&gt;</strong> into an existing page. The trigger will be
     automatically replaced with a complete link page.</p>
 
     <p>For your convenience, the plugin can also create a new links page
@@ -131,7 +131,7 @@ function lub_php_page_options_page(){
 
     <tr valign="top">
       <td align="left" valign="middle">Your LUB Site ID 
-         <input name="lub_php_page_lubid" type="text" size="20" value="<?php echo htmlspecialchars( get_option( 'lub_php_page_lubid' ) ); ?>" />
+         <input name="lub_links_page_lubid" type="text" size="20" value="<?php echo htmlspecialchars( get_option( 'lub_links_page_lubid' ) ); ?>" />
       </td>
     </tr>
 
@@ -152,16 +152,16 @@ function lub_php_page_options_page(){
     <tr valign="top">
       <td align="right" valign="middle"><strong>Page Title</strong></td>
       <td align="left" valign="middle">
-         <input name="lub_php_page_title" type="text" size="40" 
-                value="<?php echo htmlspecialchars( get_option( 'lub_php_page_title' ) ); ?>" />
+         <input name="lub_links_page_title" type="text" size="40" 
+                value="<?php echo htmlspecialchars( get_option( 'lub_links_page_title' ) ); ?>" />
       </td>
     </tr>
 
     <tr valign="top">
       <td align="right" valign="middle"><strong>Page Slug</strong></td>
       <td align="left" valign="middle">
-         <input name="lub_php_page_slug" type="text" size="40" 
-                value="<?php echo htmlspecialchars( get_option( 'lub_php_page_slug' ) ); ?>" />
+         <input name="lub_links_page_slug" type="text" size="40" 
+                value="<?php echo htmlspecialchars( get_option( 'lub_links_page_slug' ) ); ?>" />
       </td>
     </tr>
 
@@ -178,9 +178,9 @@ function lub_php_page_options_page(){
     </div><?php
 }
 
-function lub_php_page_process($content) {
+function lub_links_page_process($content) {
 
-    $tag = "<!-- lub_php_page -->";
+    $tag = "<!-- lub_links_page -->";
 	
     // Quickly leave if nothing to replace
     
@@ -188,14 +188,14 @@ function lub_php_page_process($content) {
 
     // Otherwise generate the LUB links PHPLUB links PHPLUB links PHP and sub it in
 
-    return str_replace( $tag, lub_php_page_html(), $content );
+    return str_replace( $tag, lub_links_page_html(), $content );
 }
 
-function lub_php_page_html(){
-    $sitename = get_option( 'lub_php_page_sitename' );
-    $link_pp_help = get_option( 'lub_php_page_pp_help' );
-    $link_credit = get_option( 'lub_php_page_credit' );
-    $lubid = get_option('lub_php_page_lubid');
+function lub_links_page_html(){
+    $sitename = get_option( 'lub_links_page_sitename' );
+    $link_pp_help = get_option( 'lub_links_page_pp_help' );
+    $link_credit = get_option( 'lub_links_page_credit' );
+    $lubid = get_option('lub_links_page_lubid');
 		
 		
 	$ch = curl_init();
@@ -210,7 +210,7 @@ function lub_php_page_html(){
     return $pp;
 }
 
-add_filter('the_content', 'lub_php_page_process');
-add_action('admin_menu', 'lub_php_page_options_setup');
+add_filter('the_content', 'lub_links_page_process');
+add_action('admin_menu', 'lub_links_page_options_setup');
 
 ?>
