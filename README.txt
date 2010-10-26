@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: linkusback
 Donate link: http://linkusback.com/
-Tags: search engine optimization, search engine, SEO, link building, automatic link building, 3waylinks.net, SEO plugin
+Tags: search engine optimization, search engine, SEO, lub, link building, automatic link building, linkusback.com, SEO plugin, linkusback
 Requires at least: 2.0.2
 Tested up to: 3.0
 Stable tag: trunk
