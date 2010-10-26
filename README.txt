@@ -17,10 +17,10 @@ Please note that you have to be a member of [linkusback.com](http://linkusback.c
 
 == Installation ==
 
-1. Upload lub-php-page.zip to the /wp-content/plugins/ directory for your blog.
-2. Unzip it into /wp-content/plugins/lub-php-page/lub-php-page.php
+1. Upload lub-links-page.zip to the /wp-content/plugins/ directory for your blog.
+2. Unzip it into /wp-content/plugins/lub-links-page/lub-links-page.php
 3. Activate the plugin through the 'Plugins' menu in WordPress by clicking "LUB Links Page"
-4. Go to your Options Panel and open the "LUB Links Page" submenu. /wp-admin/options-general.php?page=lub-php-page.php
+4. Go to your Options Panel and open the "LUB Links Page" submenu. /wp-admin/options-general.php?page=lub-links-page.php
 5. Configure the options and setup your site ID.
 
 == Frequently Asked Questions ==
